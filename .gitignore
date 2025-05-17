@@ -30,3 +30,29 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Coverage
+/coverage
+.nyc_output
+
+# Debug
+.npm
+.eslintcache
+
+# Local Netlify folder
+.netlify
+
+# Arquivos temporários
+*.tmp
+*.temp
+.cache/
+
+# PWA
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/fallback-*.js
+**/public/precache-*.js
+
+# Vercel
+.vercel
