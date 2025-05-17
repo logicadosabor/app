@@ -1,0 +1,193 @@
+Okay, este é um projeto interessante e bastante específico! Para gerar um prompt extenso e detalhado que guie o desenvolvimento deste sistema, precisamos cobrir diversos aspectos, desde a concepção geral até os detalhes técnicos e de UX.
+
+---
+
+## Prompt Extenso para Desenvolvimento de Sistema de Monitoramento de Qualidade de Vegetais (React + FastAPI) - Restaurante Lógica do Sabor
+
+**Título do Projeto:** Sistema de Monitoramento de Boas Práticas na Higienização de Vegetais - Lógica do Sabor
+
+**1. Visão Geral e Objetivo Principal:**
+Desenvolver uma aplicação web completa (Frontend React, Backend FastAPI) para o "Restaurante Lógica do Sabor" que permita o registro, acompanhamento e visualização de dados referentes aos processos de higienização de vegetais. O foco principal é demonstrar e garantir a aplicação de boas práticas na minoração de agrotóxicos, utilizando soluções como vinagre e bicarbonato de sódio. O sistema deve gerar e manter 12 tipos de gráficos analíticos para visualizar esses padrões de qualidade e os cuidados dos cozinheiros.
+
+**2. Contexto e Justificativa:**
+O Restaurante Lógica do Sabor preza pela máxima qualidade e segurança alimentar. Este sistema visa:
+    a.  **Transparência:** Demonstrar aos clientes e à gerência o compromisso com a saúde.
+    b.  **Controle de Qualidade Interno:** Permitir que a gerência monitore a adesão aos protocolos de higienização.
+    c.  **Melhoria Contínua:** Identificar padrões, possíveis desvios e oportunidades de otimização nos processos.
+    d.  **Rastreabilidade:** Manter um histórico dos procedimentos aplicados a cada lote de vegetais.
+
+**3. Público-Alvo do Sistema:**
+    a.  **Cozinheiros/Auxiliares de Cozinha:** Responsáveis por inserir os dados dos processos de higienização.
+    b.  **Gerente do Restaurante/Chef de Cozinha:** Responsáveis por monitorar os dados, gerar relatórios e garantir a conformidade.
+    c.  **(Opcional/Futuro) Auditores de Qualidade/Clientes:** Acesso a relatórios resumidos de conformidade.
+
+**4. Tecnologias Mandatórias:**
+    *   **Frontend:** React (com Hooks, Context API ou Redux para gerenciamento de estado, bibliotecas de gráficos como Recharts, Nivo, ou Chart.js).
+    *   **Backend:** FastAPI (Python, com Pydantic para validação de dados, SQLAlchemy para ORM, Alembic para migrações de banco de dados).
+    *   **Banco de Dados:** PostgreSQL (preferencialmente) ou SQLite (para desenvolvimento inicial).
+    *   **Autenticação:** JWT (JSON Web Tokens) para proteger as rotas da API.
+
+**5. Lista de Vegetais a Serem Monitorados:**
+O sistema deve permitir o cadastro e monitoramento dos seguintes vegetais (e ser extensível para adicionar outros):
+    1.  Arroz integral (considerar o processo de lavagem antes do cozimento)
+    2.  Feijão carioca
+    3.  Feijão preto
+    4.  Feijão verde
+    5.  Soja texturizada (hidrogenada)
+    6.  Cenoura ralada
+    7.  Beterraba ralada
+    8.  Jiló
+    9.  Quiabo
+    10. Repolho (branco/roxo)
+    11. Batata doce
+    12. Batata inglesa
+    13. Cará
+    14. Berinjela
+    15. Couve
+    16. Pepino
+    17. Tomate
+    18. Cebola
+    19. Alho
+
+**6. Soluções de Higienização e Parâmetros:**
+O sistema deve permitir o registro do uso das seguintes soluções, com seus respectivos parâmetros:
+    *   **Solução de Vinagre:**
+        *   Proporção: Ex: 1 parte de vinagre para 3 partes de água (configurável).
+        *   Tempo de imersão: Ex: 15-30 minutos (configurável).
+    *   **Solução de Bicarbonato de Sódio:**
+        *   Concentração: Ex: 1 colher de sopa por litro de água (configurável).
+        *   Tempo de imersão: Ex: 15-30 minutos (configurável).
+    *   **Hipoclorito de Sódio (Água Sanitária para alimentos):**
+        *   Concentração: Ex: X gotas/mL por litro de água (conforme recomendação do fabricante e ANVISA, configurável).
+        *   Tempo de imersão: Ex: 10-15 minutos (configurável).
+    *   **Apenas Água Corrente:**
+        *   Tempo de lavagem/imersão (se aplicável).
+    *   **Outros:** O sistema deve permitir adicionar novos tipos de solução.
+
+**7. Funcionalidades Detalhadas:**
+
+    **7.1. Módulo de Gerenciamento (Admin):**
+        *   **CRUD de Usuários:**
+            *   Cadastro, edição, listagem e exclusão de usuários (Cozinheiro, Gerente).
+            *   Atribuição de papéis (roles) com diferentes permissões.
+        *   **CRUD de Vegetais:**
+            *   Permitir adicionar, editar, listar e desativar vegetais da lista.
+        *   **CRUD de Soluções de Higienização:**
+            *   Permitir adicionar, editar, listar e desativar soluções.
+            *   Definir parâmetros padrão para cada solução (proporção, concentração, tempo mínimo/máximo recomendado).
+        *   **Configurações Gerais:**
+            *   Definir unidades de medida (ex: colher de sopa, mL, L).
+
+    **7.2. Módulo de Registro de Processos de Higienização (Cozinheiros/Gerentes):**
+        *   Formulário intuitivo para registrar cada processo de higienização.
+        *   Campos a serem registrados:
+            *   Data e Hora do processo.
+            *   Cozinheiro responsável (selecionar de uma lista de usuários cadastrados).
+            *   Vegetal(is) higienizado(s) (seleção múltipla ou individual, com campo para lote/identificador do fornecedor, se houver).
+            *   Quantidade/Peso aproximado do vegetal.
+            *   Solução de higienização utilizada (selecionar de uma lista).
+            *   Detalhes da solução aplicada:
+                *   Para Vinagre: Quantidade de vinagre, quantidade de água.
+                *   Para Bicarbonato: Quantidade de bicarbonato, quantidade de água.
+                *   Para Hipoclorito: Quantidade de produto, quantidade de água.
+            *   Tempo de imersão real (em minutos).
+            *   Houve enxágue posterior? (Sim/Não).
+            *   Observações adicionais (campo de texto livre).
+            *   (Opcional) Upload de foto do processo (para evidência).
+        *   Validação dos dados de entrada (ex: tempo de imersão dentro de um range aceitável para a solução escolhida, com alertas visuais caso fuja do padrão, mas permitindo o registro).
+
+    **7.3. Módulo de Dashboard e Visualização de Dados (Gerentes):**
+        *   Painel principal com visão geral e acesso aos gráficos.
+        *   Filtros globais para os gráficos:
+            *   Período (data de início e fim).
+            *   Tipo de vegetal.
+            *   Tipo de solução de higienização.
+            *   Cozinheiro responsável.
+        *   **Geração de 12 Gráficos Específicos:**
+            *   **Gráficos KDE (Kernel Density Estimate) ou Violino (para visualizar distribuições):**
+                1.  **KDE/Violino 1:** Distribuição dos tempos de imersão por tipo de vegetal (comparando diferentes vegetais).
+                2.  **KDE/Violino 2:** Distribuição dos tempos de imersão por tipo de solução de higienização (comparando eficácia percebida vs. tempo).
+                3.  **KDE/Violino 3:** Distribuição da concentração da solução (ex: g/L para bicarbonato) aplicada por tipo de vegetal, comparado ao padrão recomendado.
+            *   **Gráficos de Barras Empilhadas (para visualizar proporções e composições):**
+                4.  **Barras Empilhadas 1:** Frequência de uso de cada solução de higienização por tipo de vegetal (ex: para tomate, 60% vinagre, 30% bicarbonato, 10% hipoclorito).
+                5.  **Barras Empilhadas 2:** Número de processos de higienização realizados por cozinheiro, com as barras empilhadas por tipo de solução utilizada.
+                6.  **Barras Empilhadas 3:** Conformidade de tempo de imersão por vegetal (barras mostrando % dentro do padrão, % abaixo, % acima).
+            *   **Histogramas Empilhados (para visualizar frequências em intervalos):**
+                7.  **Histograma Empilhado 1:** Distribuição de frequência dos tempos de imersão (bins de 5 ou 10 minutos), empilhados por tipo de vegetal.
+                8.  **Histograma Empilhado 2:** Distribuição de frequência dos tempos de imersão, empilhados por tipo de solução.
+                9.  **Histograma Empilhado 3:** Número de processos de higienização por dia da semana, empilhados por cozinheiro.
+            *   **Gráficos Adicionais (para completar os 12, combinando ou variando os anteriores):**
+                10. **Barras Empilhadas 4:** Total de vegetais (quantidade/peso) processados por mês, empilhado por tipo de vegetal.
+                11. **KDE/Violino 4:** Comparação da distribuição de tempo de imersão para um vegetal específico entre diferentes cozinheiros.
+                12. **Barras Empilhadas 5:** Percentual de utilização de cada método de higienização ao longo do tempo (e.g., mensalmente, para ver tendências de adoção de um método sobre outro).
+
+        *   **Tabela de Dados Brutos:**
+            *   Exibição paginada de todos os registros de higienização, com filtros e capacidade de exportação (CSV, Excel).
+
+**8. Estrutura de Dados (Modelos Pydantic para FastAPI e Tabelas SQL):**
+
+    *   **User:** `id`, `username`, `hashed_password`, `full_name`, `role` (enum: `COZINHEIRO`, `GERENTE`), `is_active`.
+    *   **Vegetal:** `id`, `nome` (string, unique), `descricao` (text, opcional), `ativo` (boolean).
+    *   **SolucaoHigienizacao:** `id`, `nome` (string, unique), `tipo_solucao` (enum: `VINAGRE`, `BICARBONATO`, `HIPOCLORITO`, `AGUA`, `OUTRO`), `descricao` (text, opcional), `param_padrao_concentracao` (string, ex: "1:3" ou "1 colher/L"), `param_padrao_tempo_min` (int), `param_padrao_tempo_max` (int), `ativo` (boolean).
+    *   **ProcessoHigienizacao:**
+        *   `id` (int, primary_key)
+        *   `data_hora_registro` (datetime, default now)
+        *   `user_id` (int, foreign_key to User)
+        *   `vegetal_id` (int, foreign_key to Vegetal)
+        *   `lote_identificador` (string, opcional)
+        *   `quantidade_vegetal` (float, opcional)
+        *   `unidade_quantidade` (string, opcional, ex: "kg", "unidades")
+        *   `solucao_higienizacao_id` (int, foreign_key to SolucaoHigienizacao)
+        *   `concentracao_aplicada_valor1` (float, opcional, ex: quantidade de vinagre/bicarbonato)
+        *   `concentracao_aplicada_unidade1` (string, opcional, ex: "mL", "colher de sopa")
+        *   `concentracao_aplicada_valor2` (float, opcional, ex: quantidade de água)
+        *   `concentracao_aplicada_unidade2` (string, opcional, ex: "L")
+        *   `tempo_imersao_real_minutos` (int)
+        *   `houve_enxague_posterior` (boolean)
+        *   `observacoes` (text, opcional)
+        *   `foto_evidencia_path` (string, opcional)
+        *   `conformidade_tempo` (calculado ou inferido: `DENTRO_PADRAO`, `ABAIXO_PADRAO`, `ACIMA_PADRAO`, `NAO_AVALIADO`)
+        *   `conformidade_concentracao` (calculado ou inferido)
+
+**9. Requisitos Não Funcionais:**
+    *   **Usabilidade:** Interface intuitiva, fácil de usar, especialmente para os cozinheiros que farão a entrada de dados. Design responsivo para acesso em tablets na cozinha.
+    *   **Desempenho:** Carregamento rápido dos gráficos e da listagem de dados. Consultas otimizadas no backend.
+    *   **Segurança:** Proteção contra XSS, CSRF, SQL Injection. Senhas armazenadas com hash seguro.
+    *   **Manutenibilidade:** Código bem estruturado, comentado e seguindo boas práticas de desenvolvimento React e Python.
+    *   **Escalabilidade:** Arquitetura que permita futuras expansões (novos relatórios, módulos, etc.).
+    *   **Internacionalização:** Inicialmente em Português (Brasil).
+
+**10. Entregáveis Esperados (para o desenvolvedor/equipe):**
+    *   Código fonte completo do frontend React.
+    *   Código fonte completo do backend FastAPI.
+    *   Scripts de migração do banco de dados (Alembic).
+    *   Documentação da API (Swagger/OpenAPI gerado automaticamente pelo FastAPI).
+    *   Instruções para setup e deploy da aplicação.
+    *   (Opcional) Wireframes ou mockups básicos das telas principais.
+
+**11. Considerações Adicionais:**
+    *   **Alertas/Notificações:** Considerar um sistema de alertas para o gerente caso processos sejam registrados fora dos padrões recomendados (ex: tempo de imersão muito baixo).
+    *   **Gamificação (Opcional):** Para incentivar os cozinheiros, poderia haver um ranking de conformidade (se culturalmente aceitável no restaurante).
+    *   **Backup de Dados:** Definir estratégia de backup do banco de dados.
+
+**12. Fluxo de Trabalho Sugerido:**
+    1.  Setup inicial do projeto (repositórios, ambiente de dev).
+    2.  Desenvolvimento do backend:
+        a.  Modelos de dados e migrações.
+        b.  Endpoints CRUD para entidades básicas (Usuários, Vegetais, Soluções).
+        c.  Endpoint para registro do Processo de Higienização.
+        d.  Endpoints para servir os dados agregados para os gráficos.
+        e.  Autenticação e autorização.
+    3.  Desenvolvimento do frontend:
+        a.  Estrutura básica, rotas, gerenciamento de estado.
+        b.  Telas de login e gerenciamento (CRUDs).
+        c.  Formulário de registro de Processo de Higienização.
+        d.  Dashboard com os 12 gráficos (implementar um a um, testando a integração com o backend).
+    4.  Testes (unitários, integração).
+    5.  Deploy.
+
+Este prompt deve fornecer uma base sólida para o desenvolvimento do sistema. O desenvolvedor ou equipe pode usá-lo como um guia detalhado, esclarecendo dúvidas e propondo melhorias conforme o projeto avança.
+
+---
+
+Espero que este prompt detalhado seja exatamente o que você precisa para iniciar o desenvolvimento! Ele tenta cobrir todos os pontos que você mencionou e adicionar a estrutura necessária para um projeto de software.

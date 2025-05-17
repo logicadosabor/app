@@ -1,0 +1,13 @@
+fastapi==0.110.0
+uvicorn==0.29.0
+sqlalchemy==2.0.40
+pydantic==2.7.0
+alembic==1.13.1
+python-jose==3.3.0
+passlib==1.7.4
+python-multipart==0.0.9
+psycopg2-binary==2.9.9
+pymysql==1.1.1
+cryptography==36.0.2
+pytest==8.0.0
+black==24.3.0
