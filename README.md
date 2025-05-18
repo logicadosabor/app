@@ -97,6 +97,6 @@ Este sistema foi desenvolvido em conformidade com a RDC 216/2004 da ANVISA e out
 ## Suporte
 
 Para suporte técnico ou dúvidas sobre o sistema, entre em contato:
-- Email: suporte@logicadosabor.com.br
-- Telefone: (XX) XXXX-XXXX
+- Email: logicadosabor@gmail.com
+- Telefone: (61) 99907-2599
 - Horário de atendimento: Segunda a Sexta, 8h às 18h
